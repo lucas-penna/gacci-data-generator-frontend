@@ -1,0 +1,14 @@
+<button class="menu-toggle" (click)="toggleSidebar()">
+  <i class="pi pi-bars"></i>
+</button>
+
+<p-sidebar [(visible)]="visibleSidebar" [showCloseIcon]="true" [baseZIndex]="10000" [modal]="false" styleClass="custom-sidebar">
+  <h3>Menu</h3>
+  <ul class="menu-items">
+    <li *ngFor="let item of items">
+      <a [routerLink]="item.routerLink" class="menu-link">
+        <i class="{{ item.icon }}"></i> {{ item.label }}
+      </a>
+    </li>
+  </ul>
+</p-sidebar>

@@ -1,0 +1,29 @@
+.p-fluid.cadastro-paciente {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .p-field {
+    margin-bottom: 20px;
+  }
+  
+  .p-field label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .p-inputtext, .p-dropdown, .p-inputmask, .p-calendar {
+    width: 100%;
+    border-radius: 5px;
+  }
+  
+  button {
+    width: 100%;
+    border-radius: 5px;
+  }
+  
+  .p-accordion .p-accordion-header {
+    background-color: #f0f0f0;
+  }
+  
