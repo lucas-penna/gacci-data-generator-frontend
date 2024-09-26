@@ -7,16 +7,6 @@ import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
 import { AccordionModule } from 'primeng/accordion';
 
-export const customCurrencyMaskConfig = {
-  align: "right",
-  allowNegative: false,
-  decimal: ",",
-  precision: 2,
-  prefix: "R$ ",
-  suffix: "",
-  thousands: ".",
-};
-
 @Component({
   selector: 'app-patients',
   standalone: true,
@@ -28,7 +18,6 @@ export const customCurrencyMaskConfig = {
     ButtonModule,
     CalendarModule,
     AccordionModule,
-    
   ],
   templateUrl: './patients.component.html',
   styleUrls: ['./patients.component.css']
@@ -51,7 +40,7 @@ export class PatientsComponent {
     cpf: '',
     localTrabalho: '',
     grauInstrucao: null,
-    rendaMensal: null,  // Aqui o campo que usará a máscara de moeda
+    rendaMensal: '',
     estadoCivil: null,
     auxilioSolicitado: null
   };
@@ -73,4 +62,13 @@ export class PatientsComponent {
     { label: 'Auxílio 2', value: 'auxilio2' },
     { label: 'Auxílio 3', value: 'auxilio3' }
   ];
+
+  formatarMoeda(valor: string) {
+    const valorNumerico = Number(valor.replace(/[^0-9]/g, '')); // Remove caracteres não numéricos
+    const valorFormatado = (valorNumerico / 100).toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    });
+    this.paciente.rendaMensal = valorFormatado.replace("R$", "R$ "); // Adiciona o prefixo R$ com espaço
+  }
 }

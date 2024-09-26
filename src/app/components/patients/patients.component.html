@@ -120,9 +120,8 @@
     <div class="p-field p-grid">
         <label for="rendaMensal" class="p-col-12 p-md-2">Renda Mensal</label>
         <div class="p-col-12 p-md-10">
-            <input id="rendaMensal" currencyMask [(ngModel)]="paciente.rendaMensal"
-                [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', precision: 2 }" class="p-inputtext"
-                placeholder="R$ 0,00" />
+            <input id="rendaMensal" type="text" [(ngModel)]="paciente.rendaMensal"
+                (ngModelChange)="formatarMoeda($event)" class="p-inputtext" placeholder="R$ 0,00" />
         </div>
     </div>
 
