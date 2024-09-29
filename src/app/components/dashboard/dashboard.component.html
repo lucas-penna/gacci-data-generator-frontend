@@ -1,5 +1,32 @@
 <div class="dashboard-container">
-    <h1>Bem-vindo ao Dashboard</h1>
-    <p>Aqui futuramente serão exibidos gráficos e informações importantes.</p>
-  </div>
-  
+  <header class="dashboard-header">
+    <img src="assets/logo.png" alt="Logotipo" class="logo">
+  </header>
+
+  <div class="p-grid">
+    <!-- Crescimento de novos pacientes -->
+    <div class="p-col-12 p-md-6">
+      <div class="p-card">
+        <h3>Novos pacientes</h3>
+        <p-chart type="line" [data]="crescimentoPacientesData"></p-chart>
+      </div>
+    </div>
+
+    <!-- Pacientes por Faixa Etária -->
+    <div class="p-col-12 p-md-6">
+      <div class="p-card">
+        <h3>Pacientes por faixa etária</h3>
+        <p-chart type="pie" [data]="pacientesFaixaEtariaData"></p-chart>
+      </div>
+    </div>
+
+    <!-- Pacientes por Renda Média -->
+    <div class="p-col-12 p-md-6">
+      <div class="p-card">
+        <h3>Pacientes por renda média</h3>
+        <p-chart type="bar" [data]="rendaMediaPacientesData"></p-chart>
+      </div>
+    </div>
+
+
+</div>

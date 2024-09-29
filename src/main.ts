@@ -10,6 +10,8 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),
     provideHttpClient(),
-    importProvidersFrom(BrowserAnimationsModule) 
+    importProvidersFrom(BrowserAnimationsModule),
+    provideHttpClient(),
+    
   ]
 });

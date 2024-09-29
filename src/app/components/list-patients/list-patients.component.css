@@ -1,0 +1,70 @@
+.p-card-container {
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave nas bordas */
+    background-color: #fff;
+  }
+  
+  .p-card-title {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .p-field label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .p-inputtext {
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  button[pButton] {
+    width: 100%;
+    border-radius: 5px;
+  }
+  
+  .p-field.p-md-6 {
+    flex: 0 0 50%;  /* O input ocupa 50% */
+  }
+  
+  .p-field.p-md-3 {
+    flex: 0 0 25%;  /* Cada botão ocupa 25% */
+  }
+  
+  .p-pr-2 {
+    padding-right: 10px; /* Espaçamento à direita do botão "Buscar" */
+  }
+  
+  .p-pl-2 {
+    padding-left: 10px; /* Espaçamento à esquerda do botão "Novo Registro" */
+  }
+  
+  .p-datatable-wrapper {
+    margin-top: 20px;
+  }
+  
+  table.p-datatable {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  table.p-datatable th, table.p-datatable td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  table.p-datatable th {
+    background-color: #f4f4f4;
+  }
+  
+  table.p-datatable tr:hover {
+    background-color: #f1f1f1;
+  }
+  

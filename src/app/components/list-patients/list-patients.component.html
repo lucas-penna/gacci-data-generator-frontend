@@ -1,0 +1,79 @@
+<div class="p-card p-shadow-5 p-p-4 p-card-container p-mx-auto">
+  <h2 class="p-text-center p-card-title">Registro de Pacientes</h2>
+
+  <div class="p-grid p-formgrid p-fluid p-align-center">
+    <div class="p-field p-col-12 p-md-6">
+      <label for="search">Buscar por Nome ou CPF</label>
+      <div class="row">
+        <input style="width: 50%; margin-right: 30px;" id="search" pInputText placeholder="Digite o nome ou CPF"
+          [(ngModel)]="searchTerm" class="p-inputtext" />
+        <button style="width: 100px; margin-right: 30px;" pButton label="Buscar" (click)="buscarPacientes()"
+          class="p-button-primary"></button>
+        <button style="width: 150px; margin-right: 30px;" pButton label="Novo Registro" (click)="novoRegistro()"
+          class="p-button-success"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-datatable-wrapper p-mt-3">
+    <table class="p-datatable p-component">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>CPF</th>
+          <th>Telefone</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="pacientesFiltrados.length === 0">
+          <td colspan="4" class="p-text-center">Nenhum registro encontrado</td>
+        </tr>
+
+        <tr *ngFor="let paciente of pacientesFiltrados">
+          <td>{{ paciente.nome }}</td>
+          <td>{{ paciente.cpf }}</td>
+          <td>{{ paciente.telefone }}</td>
+          <td>
+            <button style="width: 35px; margin-right: 5px;" pButton icon="pi pi-search" class="p-button-warning p-button-sm"
+              pTooltip="Visualizar Ficha" (click)="openModal(paciente.id)"></button>
+              <button style="width: 35px; margin-right: 5px;" pButton icon="pi pi-paperclip" class="p-button-warning p-button-sm"
+              pTooltip="Anexos" (click)="openAnexosModal(paciente.id)"></button>
+            <button style="width: 35px;" pButton icon="pi pi-trash" class="p-button-danger p-button-sm p-ml-2"
+              pTooltip="Excluir"></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p-dialog header="Detalhes do Paciente" [(visible)]="displayModal" [modal]="true" [closable]="true" [resizable]="false" [style]="{width: '600px'}">
+    <div>
+      <p [innerHTML]="pacienteDetalhes"></p> 
+    </div>
+  </p-dialog>
+  <p-dialog header="Anexos do Paciente" [(visible)]="displayAnexosModal" [modal]="true" [closable]="true" [resizable]="false" [style]="{width: '500px'}">
+    <div *ngIf="anexos.length > 0; else noAnexos">
+      <p-table [value]="anexos">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Nome do Arquivo</th>
+            <th>Download</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-anexo>
+          <tr>
+            <td>{{ anexo.nomeArquivo }}</td>
+            <td>
+              <button pButton type="button" label="Download" icon="pi pi-download" class="p-button-success" (click)="downloadAnexo(anexo.id)"></button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  
+    <ng-template #noAnexos>
+      <p>Não há anexos disponíveis.</p>
+    </ng-template>
+  </p-dialog>
+</div>
